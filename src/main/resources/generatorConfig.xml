@@ -42,10 +42,10 @@
         </javaClientGenerator>
 
         <!-- 指定数据表 -->
-        <table schema="" tableName="users"></table>
-        <table schema="" tableName="discuss"></table>
-        <table schema=""  tableName="mainposts"/>
-        <table schema=""  tableName="reply"/>
+        <table schema="" tableName="college"></table>
+        <table schema="" tableName="department"></table>
+        <table schema=""  tableName="project"/>
+        <table schema=""  tableName="teacher"/>
 
 
     </context>
