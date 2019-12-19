@@ -17,7 +17,7 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-
+        System.out.println(httpServletRequest.getRequestURI());
         //初始默认全部放行
         return true;
     }

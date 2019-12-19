@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.entity.Teacher;
-import com.service.ILoginService;
+import com.service.ImplLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +23,16 @@ public class LoginController {
     }
 
     @Autowired
-    private ILoginService loginService;
+    private ImplLoginService loginService;
 
+    /**
+     * 登录模块
+     * @param username
+     * @param password
+     * @param session
+     * @return
+     */
+    @RequestMapping("/login")
     public String login(
             @RequestParam(value = "username",required = true)String username,
             @RequestParam(value = "password",required = true)String password,
@@ -33,7 +41,7 @@ public class LoginController {
         Teacher teacher=new Teacher();
         teacher.setName(username);
         teacher.setPassword(password);
-        if(loginService.cheakuser(teacher)){
+        if(loginService.checkuser(teacher)){
             //密码正确
             session.setAttribute("teacher",teacher);
             return "forward:/index/index";
@@ -43,4 +51,22 @@ public class LoginController {
             return "forward:/login/error";
         }
     }
+
+    /**
+     * 注销登录
+     * @param session
+     * @return
+     */
+    @RequestMapping("/lgout")
+    public String lgout(HttpSession session){
+        if (!session.getAttribute("teacher").equals(null)){
+            session.removeAttribute("teacher");
+            return "forward:/login/index";
+        }else {
+            return "forward:/login/error";
+        }
+
+
+    }
+
 }
