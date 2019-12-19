@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50018
 File Encoding         : 65001
 
-Date: 2019-12-19 11:32:03
+Date: 2019-12-19 13:57:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -97,3 +97,19 @@ CREATE TABLE `teacher` (
 INSERT INTO `teacher` VALUES ('1', '张老师', '1', '正高级教师', '1399546584', '1');
 INSERT INTO `teacher` VALUES ('2', '王老师', '2', '三级教师', '1564864154', '0');
 INSERT INTO `teacher` VALUES ('3', '李老师', '3', '正高级教师', '156464815', '2');
+
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(20) NOT NULL COMMENT '登录用户名',
+  `password` varchar(20) NOT NULL COMMENT '登录密码',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', 'root', 'mdzz');
