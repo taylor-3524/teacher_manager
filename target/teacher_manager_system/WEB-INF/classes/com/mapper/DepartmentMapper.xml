@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.entity.User">
+<mapper namespace="com.dao.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.entity.Department">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="tea_dep_num" jdbcType="INTEGER" property="teaDepNum" />
+    <result column="tea_job" jdbcType="VARCHAR" property="teaJob" />
+    <result column="tea_num" jdbcType="INTEGER" property="teaNum" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password
+    id, tea_dep_num, tea_job, tea_num
   </sql>
-  <select id="selectByExample" parameterType="com.entity.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.entity.DepartmentExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from user
+    from department
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +85,76 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from user
+    from department
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
+    delete from department
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.entity.UserExample">
-    delete from user
+  <delete id="deleteByExample" parameterType="com.entity.DepartmentExample">
+    delete from department
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.entity.User">
-    insert into user (id, username, password
-      )
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.entity.Department">
+    insert into department (id, tea_dep_num, tea_job, 
+      tea_num)
+    values (#{id,jdbcType=INTEGER}, #{teaDepNum,jdbcType=INTEGER}, #{teaJob,jdbcType=VARCHAR}, 
+      #{teaNum,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.entity.User">
-    insert into user
+  <insert id="insertSelective" parameterType="com.entity.Department">
+    insert into department
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="username != null">
-        username,
+      <if test="teaDepNum != null">
+        tea_dep_num,
       </if>
-      <if test="password != null">
-        password,
+      <if test="teaJob != null">
+        tea_job,
+      </if>
+      <if test="teaNum != null">
+        tea_num,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="teaDepNum != null">
+        #{teaDepNum,jdbcType=INTEGER},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+      <if test="teaJob != null">
+        #{teaJob,jdbcType=VARCHAR},
+      </if>
+      <if test="teaNum != null">
+        #{teaNum,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.entity.UserExample" resultType="java.lang.Long">
-    select count(*) from user
+  <select id="countByExample" parameterType="com.entity.DepartmentExample" resultType="java.lang.Long">
+    select count(*) from department
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update user
+    update department
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
+      <if test="record.teaDepNum != null">
+        tea_dep_num = #{record.teaDepNum,jdbcType=INTEGER},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.teaJob != null">
+        tea_job = #{record.teaJob,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teaNum != null">
+        tea_num = #{record.teaNum,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -152,30 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user
+    update department
     set id = #{record.id,jdbcType=INTEGER},
-      username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR}
+      tea_dep_num = #{record.teaDepNum,jdbcType=INTEGER},
+      tea_job = #{record.teaJob,jdbcType=VARCHAR},
+      tea_num = #{record.teaNum,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.entity.User">
-    update user
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Department">
+    update department
     <set>
-      <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
+      <if test="teaDepNum != null">
+        tea_dep_num = #{teaDepNum,jdbcType=INTEGER},
       </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
+      <if test="teaJob != null">
+        tea_job = #{teaJob,jdbcType=VARCHAR},
+      </if>
+      <if test="teaNum != null">
+        tea_num = #{teaNum,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.entity.User">
-    update user
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.entity.Department">
+    update department
+    set tea_dep_num = #{teaDepNum,jdbcType=INTEGER},
+      tea_job = #{teaJob,jdbcType=VARCHAR},
+      tea_num = #{teaNum,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

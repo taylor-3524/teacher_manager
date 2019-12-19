@@ -5,6 +5,8 @@ public class Teacher {
 
     private String name;
 
+    private String password;
+
     private Integer number;
 
     private String title;
@@ -27,6 +29,14 @@ public class Teacher {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getNumber() {
