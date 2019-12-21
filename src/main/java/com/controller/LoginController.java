@@ -13,8 +13,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
+    protected  class lo{
 
-
+    }
     @RequestMapping("/index")
     public ModelAndView index(){
         ModelAndView modelAndView=new ModelAndView();

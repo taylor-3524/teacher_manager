@@ -12,10 +12,22 @@
 </head>
 <body>
 <input type="button" value="教师信息录入" onclick="add()">
+<input type="button" value="修改教师信息" onclick="update()">
+<input type="button" value="查询教师信息" onclick="select()">
 </body>
 <script>
     function add() {
         window.location.href="add"
+    }
+</script>
+<script>
+    function update() {
+        window.location.href="update"
+    }
+</script>
+<script>
+    function select() {
+        window.location.href="select"
     }
 </script>
 </html>

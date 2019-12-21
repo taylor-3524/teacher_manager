@@ -1,7 +1,8 @@
 package com.service;
 
 import com.dto.TeaAndDep;
+import net.sf.json.JSONObject;
 
 public interface ImplTeaAndDepService {
-    public boolean addAction(TeaAndDep teaAndDep);
+    public JSONObject addAction(TeaAndDep teaAndDep);
 }

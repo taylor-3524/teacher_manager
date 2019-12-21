@@ -9,6 +9,7 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="assessor" jdbcType="INTEGER" property="assessor" />
+    <result column="tenure" jdbcType="VARCHAR" property="tenure" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, password, number, title, phone, assessor
+    id, name, password, number, title, phone, assessor, tenure
   </sql>
   <select id="selectByExample" parameterType="com.entity.TeacherExample" resultMap="BaseResultMap">
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.entity.Teacher">
     insert into teacher (id, name, password, 
       number, title, phone, 
-      assessor)
+      assessor, tenure)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{number,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{assessor,jdbcType=INTEGER})
+      #{assessor,jdbcType=INTEGER}, #{tenure,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.entity.Teacher">
     insert into teacher
@@ -133,6 +134,9 @@
       <if test="assessor != null">
         assessor,
       </if>
+      <if test="tenure != null">
+        tenure,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -155,6 +159,9 @@
       </if>
       <if test="assessor != null">
         #{assessor,jdbcType=INTEGER},
+      </if>
+      <if test="tenure != null">
+        #{tenure,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.assessor != null">
         assessor = #{record.assessor,jdbcType=INTEGER},
       </if>
+      <if test="record.tenure != null">
+        tenure = #{record.tenure,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       number = #{record.number,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
-      assessor = #{record.assessor,jdbcType=INTEGER}
+      assessor = #{record.assessor,jdbcType=INTEGER},
+      tenure = #{record.tenure,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="assessor != null">
         assessor = #{assessor,jdbcType=INTEGER},
       </if>
+      <if test="tenure != null">
+        tenure = #{tenure,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -237,7 +251,8 @@
       number = #{number,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      assessor = #{assessor,jdbcType=INTEGER}
+      assessor = #{assessor,jdbcType=INTEGER},
+      tenure = #{tenure,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

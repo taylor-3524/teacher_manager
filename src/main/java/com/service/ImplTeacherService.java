@@ -1,5 +1,8 @@
 package com.service;
 
+import com.entity.Teacher;
+import net.sf.json.JSONObject;
+
 public interface ImplTeacherService {
-    public boolean checkTeaNum(Integer number);
+    public JSONObject checkTeaNum( Integer number);
 }

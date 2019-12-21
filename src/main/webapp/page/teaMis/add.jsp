@@ -12,47 +12,104 @@
     <title>教师信息录入</title>
 </head>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="../css/teaMis_add.css"/>
 <body>
-<form>
-    *<input type="text" placeholder="请输入教师工号" name="number">
+<form method="post" action="addAction">
+
+    <label>教师工号</label>
+    <input type="text" placeholder="仅限数字" name="number" id="number" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+    <span id="number_tip"></span>
     <br>
-    *<input type="text" placeholder="请输入教师姓名" name="name">
+    <label>教师姓名</label>
+    <input type="text" placeholder="不超过10个中文字符" name="name" />
     <br>
-    *<input type="password" placeholder="请输入教师初始密码" name="password">
+    <label>初始密码</label>
+    <input type="password" placeholder="请牢记密码" name="password"/>
     <br>
-    *<input type="text" placeholder="请输入教师职称" name="title">
+    <label>教师职称</label>
+    <select id="title" name="title">
+    <option value="正高级教师">正高级教师</option>
+    <option value="高级教师">高级教师</option>
+    <option value="一级教师">一级教师</option>
+    <option value="二级教师">二级教师</option>
+    <option value="三级教师">三级教师</option>
+</select>
+    <%--<input type="text" placeholder="请输入教师职称" name="title"/>--%>
     <br>
-    *<input type="text" placeholder="请输入教师权限" name="assessor">
+    <label>审批权限</label>
+    <select id="assessor" name="assessor">
+        <option value="0">无审批权限</option>
+        <option value="1">信息数理学院</option>
+        <option value="2">化工学院</option>
+    </select>
+    <%--<input type="text" placeholder="请输入教师权限" name="assessor"/>--%>
     <br>
-    *<input type="text" placeholder="请输入教师所属部门" name="teaDepNum">
+    <label>所属部门</label>
+    <select id="teaDepNum" name="teaDepNum">
+        <option value="1">信息数理学院</option>
+        <option value="2">化工学院</option>
+    </select>
     <br>
-    *<input type="text" placeholder="请输入教师职务" name="teaJob">
+    <label>教师职务</label>
+    <select name="teaJob">
+        <option value="校长">校长</option>
+        <option value="书记">书记</option>
+        <option value="副校长">副校长</option>
+        <option value="校长助理">校长助理</option>
+        <option value="学院院长">学院院长</option>
+        <option value="系主任">系主任</option>
+        <option value="教研室主任">教研室主任</option>
+        <option value="总务主任">总务主任</option>
+        <option value="教导主任">教导主任</option>
+        <option value="普通教师">普通教师</option>
+    </select>
+<%--    <input type="text" placeholder="请输入教师职务" name="teaJob"/>--%>
     <br>
-    <input type="text" placeholder="请输入教师手机号" name="phone">
+    <label>任职情况</label>
+    <select name="tenure" id="tenure">
+        <option value="在职">在职</option>
+        <option value="休假">休假</option>
+        <option value="离职">离职</option>
+    </select>
+    <br>
+    <label>教师手机号(选填)</label>
+    <input type="text" placeholder="请输入教师手机号" name="phone" value="+86 " />
+    <br>
+    <input type="submit" value="提交" id="submit_btn">
 </form>
-<input type="button" onclick="seria()" value="测试">
 </body>
 <script>
-    function seria() {
-        var form={};
-        var number=$("#number").val();
-        var name=$("#name").val();
-        var password=$("#password").val();
-        var title=$("#title").val();
-        var phone=$("#phone").val();
-        var assessor=$("#assessor").val();
-        var teaDepNum=$("#teaDepNum").val();
-        var teaJob=$("#teaJob").val();
-        form["number"]=number;
-        form["name"]=name;
-        form["password"]=password;
-        form["title"]=title;
-        form["phone"]=phone;
-        form["assessor"]=assessor;
-        form["teaDepNum"]=teaDepNum;
-        form["teaJob"]=teaJob;
-        console.log(form);
+    $(function () {
+        $("#number").blur(function () {
+            var number = $(this).val();
+            $.ajax({
+                type: "post",
+                url: "checkNum",
+                data: {
+                    number: number
+                },
+                dataType: "json",
+                success: function (jsonObject) {
+                    if(jsonObject.code!=1){
+                        $("#submit_btn").attr('disabled',true);
+                        $("#number_tip").text(jsonObject.msg);
+                    }else {
+                        $("#number_tip").text(jsonObject.msg);
+                        $("#submit_btn").attr('disabled',false);
+                    }
+                },
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        });
+    })
+</script>
+<script>
+    var add_msg =${add_msg};
+    if (add_msg != null) {
+            alert(add_msg.msg);
     }
 </script>
-
 </html>

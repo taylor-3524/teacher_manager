@@ -3,6 +3,7 @@ package com.controller;
 import com.dao.TeacherMapper;
 import com.dto.TeaAndDep;
 import com.entity.Teacher;
+import com.service.ImplTeaAndDepService;
 import com.service.ImplTeacherService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,57 +33,32 @@ public class TeacherMisController {
 
 
     @Autowired
-    ImplTeacherService teacherService;
+    private ImplTeacherService teacherService;
 
     /**
      * 检查工号合法性
-     * @param teaAndDep
+     * @param number
      * @return json
      */
-    @RequestMapping(value = "/checkNum",method = RequestMethod.POST)
+    @RequestMapping(value = "/checkNum")
     @ResponseBody
-    public JSONObject checkNum(@RequestParam("teaAndDep")TeaAndDep teaAndDep){
-        JSONObject jsonObject=new JSONObject();
-        if(teaAndDep.getNumber()!=null){
-            //有传工号
-            if(teacherService.checkTeaNum(teaAndDep.getNumber())){
-                //工号合法
-                jsonObject.put("tip","工号可以使用");
-                jsonObject.put("code","001");
-            }else {
-                jsonObject.put("tip","工号已被分配");
-                jsonObject.put("code","002");
-            }
-        }else {
-            //没有工号
-            jsonObject.put("tip","工号是必填项");
-            jsonObject.put("code","003");
-        }
+    public JSONObject checkNum(@RequestParam(value = "number")Integer number){
+        JSONObject jsonObject=teacherService.checkTeaNum(number);
         return jsonObject;
     }
 
+    @Autowired
+    private ImplTeaAndDepService teaAndDepService;
     /**
      * 保存数据
      * @param teaAndDep
-     * @return
+     * @return json
      */
     @RequestMapping(value = "/addAction")
-    @ResponseBody
-    public JSONObject addAction(@RequestParam("teaAndDep")TeaAndDep teaAndDep){
-        JSONObject jsonObject=new JSONObject();
-        if(teaAndDep.getNumber()==null
-                ||teaAndDep.getPassword()==null
-                ||teaAndDep.getName()==null
-                ||teaAndDep.getAssessor()==null
-                ||teaAndDep.getTitle()==null
-                ||teaAndDep.getTeaDepNum()==null
-                ||teaAndDep.getTeaJob()==null
-        ){
-            //有必填项没填
-            jsonObject.put("msg","有必填项目没有被填写");
-            jsonObject.put("code",004);
-        }
-
-        return jsonObject;
+    public ModelAndView addAction(TeaAndDep teaAndDep){
+        ModelAndView modelAndView=new ModelAndView("teaMis/add");
+        JSONObject jsonObject=teaAndDepService.addAction(teaAndDep);
+        modelAndView.addObject("add_msg",jsonObject);
+        return modelAndView;
     }
 }

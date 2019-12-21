@@ -15,6 +15,8 @@ public class Teacher {
 
     private Integer assessor;
 
+    private String tenure;
+
     public Integer getId() {
         return id;
     }
@@ -69,5 +71,13 @@ public class Teacher {
 
     public void setAssessor(Integer assessor) {
         this.assessor = assessor;
+    }
+
+    public String getTenure() {
+        return tenure;
+    }
+
+    public void setTenure(String tenure) {
+        this.tenure = tenure == null ? null : tenure.trim();
     }
 }

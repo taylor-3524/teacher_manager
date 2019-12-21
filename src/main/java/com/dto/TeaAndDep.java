@@ -1,5 +1,7 @@
 package com.dto;
 
+import com.entity.College;
+
 public class TeaAndDep {
     private String name;
     private String password;
@@ -9,6 +11,7 @@ public class TeaAndDep {
     private Integer assessor;
     private Integer teaDepNum;
     private String teaJob;
+    private String tenure;
 
     public String getName() {
         return name;
@@ -74,5 +77,11 @@ public class TeaAndDep {
         this.teaJob = teaJob;
     }
 
+    public String getTenure() {
+        return tenure;
+    }
 
+    public void setTenure(String tenure) {
+        this.tenure = tenure;
+    }
 }

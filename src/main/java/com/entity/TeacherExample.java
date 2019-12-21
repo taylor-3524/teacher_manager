@@ -563,6 +563,76 @@ public class TeacherExample {
             addCriterion("assessor not between", value1, value2, "assessor");
             return (Criteria) this;
         }
+
+        public Criteria andTenureIsNull() {
+            addCriterion("tenure is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureIsNotNull() {
+            addCriterion("tenure is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureEqualTo(String value) {
+            addCriterion("tenure =", value, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureNotEqualTo(String value) {
+            addCriterion("tenure <>", value, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureGreaterThan(String value) {
+            addCriterion("tenure >", value, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureGreaterThanOrEqualTo(String value) {
+            addCriterion("tenure >=", value, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureLessThan(String value) {
+            addCriterion("tenure <", value, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureLessThanOrEqualTo(String value) {
+            addCriterion("tenure <=", value, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureLike(String value) {
+            addCriterion("tenure like", value, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureNotLike(String value) {
+            addCriterion("tenure not like", value, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureIn(List<String> values) {
+            addCriterion("tenure in", values, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureNotIn(List<String> values) {
+            addCriterion("tenure not in", values, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureBetween(String value1, String value2) {
+            addCriterion("tenure between", value1, value2, "tenure");
+            return (Criteria) this;
+        }
+
+        public Criteria andTenureNotBetween(String value1, String value2) {
+            addCriterion("tenure not between", value1, value2, "tenure");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
