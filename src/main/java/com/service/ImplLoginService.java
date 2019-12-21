@@ -2,6 +2,8 @@ package com.service;
 
 import com.entity.Teacher;
 
+import javax.servlet.http.HttpSession;
+
 public interface ImplLoginService {
-    public boolean checkuser(Teacher teacher);
+    public void checkuser(Teacher teacher,HttpSession session);
 }

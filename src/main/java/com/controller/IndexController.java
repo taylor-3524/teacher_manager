@@ -10,7 +10,7 @@ public class IndexController {
     @RequestMapping("/index")
     public ModelAndView index(){
         ModelAndView modelAndView=new ModelAndView();
-        modelAndView.setViewName("/index/index");
+        modelAndView.setViewName("index/index");
         return modelAndView;
     }
 }

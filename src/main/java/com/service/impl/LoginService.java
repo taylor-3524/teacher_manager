@@ -7,6 +7,7 @@ import com.service.ImplLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -16,15 +17,17 @@ public class LoginService implements ImplLoginService {
     private TeacherMapper teacherMapper;
 
     @Override
-    public boolean checkuser(Teacher teacher) {
+    public void checkuser(Teacher teacher, HttpSession session) {
         TeacherExample teacherExample=new TeacherExample();
         teacherExample.createCriteria().andNameEqualTo(teacher.getName());
         List<Teacher> list=teacherMapper.selectByExample(teacherExample);
 
-        if(list.isEmpty()){
-            //没有这个用户名
-            return false;
+        if(!list.isEmpty()){
+            //有这个用户名
+            if(list.get(0).getPassword().equals(teacher.getPassword())){
+                session.setAttribute("teacher",teacher);
+            }
         }
-        return list.get(0).getPassword().equals(teacher.getPassword());
+
     }
 }

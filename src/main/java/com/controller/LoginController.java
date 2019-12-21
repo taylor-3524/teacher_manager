@@ -28,30 +28,17 @@ public class LoginController {
 
     /**
      * 登录模块
-     * @param username
-     * @param password
+     * Teacher
      * @param session
      * @return
      */
     @RequestMapping("/login")
-    public String login(
-            @RequestParam(value = "username",required = true)String username,
-            @RequestParam(value = "password",required = true)String password,
-            HttpSession session
-    ){
-        Teacher teacher=new Teacher();
-        teacher.setName(username);
-        teacher.setPassword(password);
-        if(loginService.checkuser(teacher)){
+    public String login(Teacher teacher, HttpSession session){
+        loginService.checkuser(teacher, session);
             //密码正确
-            session.setAttribute("teacher",teacher);
-            return "forward:/index/index";
-        }
-        else{
-            //密码错误
-            return "forward:/login/error";
-        }
+            return "index/index";
     }
+
 
     /**
      * 注销登录

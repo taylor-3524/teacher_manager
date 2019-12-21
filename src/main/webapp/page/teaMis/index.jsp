@@ -13,7 +13,7 @@
 <body>
 <input type="button" value="教师信息录入" onclick="add()">
 <input type="button" value="修改教师信息" onclick="update()">
-<input type="button" value="查询教师信息" onclick="select()">
+<input type="button" value="查询教师信息" onclick="sel()">
 </body>
 <script>
     function add() {
@@ -21,13 +21,14 @@
     }
 </script>
 <script>
-    function update() {
+    function sel() {
         window.location.href="../teaSel/index"
     }
 </script>
 <script>
-    function select() {
-        window.location.href="../teaSel/index"
+    function update() {
+        window.location.href="../teaUpd/index"
     }
 </script>
+
 </html>
