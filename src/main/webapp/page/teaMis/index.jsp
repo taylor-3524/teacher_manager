@@ -17,17 +17,17 @@
 </body>
 <script>
     function add() {
-        window.location.href="add"
+        window.location.href="../teaAdd/index"
     }
 </script>
 <script>
     function update() {
-        window.location.href="update"
+        window.location.href="../teaSel/index"
     }
 </script>
 <script>
     function select() {
-        window.location.href="select"
+        window.location.href="../teaSel/index"
     }
 </script>
 </html>

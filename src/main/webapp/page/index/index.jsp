@@ -18,7 +18,7 @@
 </body>
 <script>
     function teacher_manage() {
-        window.location.href="../teaMis/index"
+        window.location.href="../teaIndex/index"
     }
 </script>
 <script>

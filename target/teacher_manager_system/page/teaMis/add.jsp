@@ -24,7 +24,12 @@
     <input type="text" placeholder="不超过10个中文字符" name="name" />
     <br>
     <label>初始密码</label>
-    <input type="password" placeholder="请牢记密码" name="password"/>
+    <input type="password" placeholder="请输入密码" name="password" id="password"/>
+    <span class="confirm_password_tip"></span>
+    <br>
+    <label>确认密码</label>
+    <input type="password" placeholder="请再次输入密码" id="confirm_password" name="confirm_password">
+    <span class="confirm_password_tip"></span>
     <br>
     <label>教师职称</label>
     <select id="title" name="title">
@@ -104,6 +109,21 @@
                 }
             });
         });
+    })
+</script>
+<script>
+    $(function () {
+        $("#confirm_password").blur(function () {
+            var password=$("#password").val();
+            var confirm_password=$(this).val();
+            if(password==confirm_password){
+                $("#submit_btn").attr('disabled',false);
+                $(".confirm_password_tip").text("");
+            }else {
+                $("#submit_btn").attr('disabled',true);
+                $(".confirm_password_tip").text("密码不一致");
+            }
+        })
     })
 </script>
 <script>
