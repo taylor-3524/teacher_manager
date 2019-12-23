@@ -12,6 +12,7 @@
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 
+
     <!--模板引擎  补充完整的jsp路径-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/page/"/>

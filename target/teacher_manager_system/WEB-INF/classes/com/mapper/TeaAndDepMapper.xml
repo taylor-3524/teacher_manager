@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TeaAndDepMapper">
+
+    <select id="selectByDepAndJob" parameterType="com.dto.TeaAndDep" resultType="com.dto.TeaAndDep">
+    select name,password,number,title,phone,assessor,tea_dep_num,tea_job from teacher,department
+        <trim suffixOverrides="," prefix="where">
+            <if test="teaDepNum!=null">tea_dep_num=#{teaDepNum},</if>
+            <if test="teaJob!=null">tea_job=#{teaJob}</if>
+        </trim>
+    </select>
+</mapper>

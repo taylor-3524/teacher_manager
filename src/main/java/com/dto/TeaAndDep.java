@@ -1,7 +1,9 @@
 package com.dto;
 
 import com.entity.College;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class TeaAndDep {
     private String name;
     private String password;
