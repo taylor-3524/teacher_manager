@@ -46,22 +46,13 @@ public class TeacherSelectController {
     @RequestMapping("/selectByDepAndJob")
     public ModelAndView selectByDepAndJob(TeaAndDep teaAndDep){
         ModelAndView modelAndView=new ModelAndView("teaMis/selectRes");
-        JSONObject jsonObject=teacherSelectService.selectByDepAndJob(teaAndDep);
-        modelAndView.addObject("msg",jsonObject);
+        List<Teacher> list=teacherSelectService.selectByDepAndJob(teaAndDep);
+
+        modelAndView.addObject("data",list);
 
         return modelAndView;
     }
 
-/*    @RequestMapping("/selectByDepAndJob")
-    @ResponseBody
-    public JSONObject selectByDepAndJob(
-            @RequestParam(value = "teaDepNum")Integer teaDepNum,
-            @RequestParam(value = "teaJob")String teaJob
-            ){
-        JSONObject msg=teacherSelectService.selectByDepAndJob(teaDepNum,teaJob);
-        return msg;
-
-    }*/
 
 
 }

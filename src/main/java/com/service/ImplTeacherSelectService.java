@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ImplTeacherSelectService {
     public List<Teacher> selectByName(String name);
-    public JSONObject selectByDepAndJob(TeaAndDep teaAndDep);
+    public List<Teacher> selectByDepAndJob(TeaAndDep teaAndDep);
 }

@@ -31,9 +31,9 @@ public class TeacherSelectService implements ImplTeacherSelectService {
         TeacherExample teacherExample=new TeacherExample();
         teacherExample.createCriteria().andNameLike("%"+name+"%");
         List<Teacher> list=teacherMapper.selectByExample(teacherExample);
-        for (Teacher tea_list:list) {
+/*        for (Teacher tea_list:list) {
             System.out.println(tea_list.getName());
-        }
+        }*/
 
         return list;
     }
@@ -42,19 +42,19 @@ public class TeacherSelectService implements ImplTeacherSelectService {
     private TeaAndDepMapper teaAndDepMapper;
     @Autowired
     private TeaAndDep teaAndDep;
+    @Autowired
+    private DepartmentMapper departmentMapper;
     /**
      * 根据部门和职务找人
      * @return teacher的json
      */
     @Override
-    public JSONObject selectByDepAndJob(TeaAndDep teaAndDep) {
-        JSONObject jsonObject=new JSONObject();
-        List<TeaAndDep> list=teaAndDepMapper.selectByDepAndJob(teaAndDep);
-        /*
+    public List<Teacher> selectByDepAndJob(TeaAndDep teaAndDep) {
+
 
         DepartmentExample departmentExample=new DepartmentExample();
-        departmentExample.createCriteria().andTeaDepNumEqualTo(teaDepNum);
-        departmentExample.createCriteria().andTeaJobEqualTo(teaJob);
+        departmentExample.createCriteria().andTeaDepNumEqualTo(teaAndDep.getTeaDepNum());
+        departmentExample.createCriteria().andTeaJobEqualTo(teaAndDep.getTeaJob());
         List<Department> dep_list=departmentMapper.selectByExample(departmentExample);
         List<Teacher> list=new ArrayList<>();
         for (Department dep:dep_list) {
@@ -65,13 +65,7 @@ public class TeacherSelectService implements ImplTeacherSelectService {
                 list.add(list_tmp.get(0));
             }
 
-        }*/
-
-
-        jsonObject.put("success","success");
-        jsonObject.put("code","001");
-        jsonObject.put("data",list);
-
-        return jsonObject;
+        }
+        return list;
     }
 }

@@ -13,26 +13,22 @@
     <script type="text/javascript" src="../js/jquery.min.js"></script>
 </head>
 <body>
-
-
-<br>
+<label>根据姓名查询教师</label>
 <form action="selectByName" method="post">
     <input type="text" placeholder="请输入教师姓名或部分姓名" name="name" id="name">
-    <br>
     <input type="submit" value="查询">
 </form>
 <br>
-<label>选择部门</label>
-<br>
-<label>选择职务</label>
+<label>根据部门及职务查询教师</label>
 <br>
 <form action="selectByDepAndJob" method="post">
-
+    <label>选择部门</label>
     <select name="teaDepNum" id="dep">
-    <option value="1">信息数理学院</option>
-    <option value="2">化工学院</option>
+        <option value="1">信息数理学院</option>
+        <option value="2">化工学院</option>
 </select>
     <br>
+    <label>选择职务</label>
 
     <select name="teaJob" id="job">
         <option value="校长">校长</option>
@@ -49,7 +45,6 @@
     <br>
     <input type="submit" value="查询">
 </form>
-
 
 </body>
 
