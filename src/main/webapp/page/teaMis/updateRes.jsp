@@ -58,8 +58,7 @@
 </body>
 <script>
     function update(number) {
-        var number=number;
-        window.location.href="updateGetPerson?number=${number}"
+        window.location.href="updateGetPerson?number="+number;
     }
 </script>
 </html>

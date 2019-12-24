@@ -24,42 +24,52 @@
     </tr>
 
     <c:forEach var="list" items="${data}" varStatus="status">
-    <tr>
-        <td>${list.number}</td>
+        <tr>
+            <td>${list.number}</td>
             <td>${list.name}</td>
             <td>${list.password}</td>
             <td>${list.title}</td>
             <td>${list.phone}</td>
             <td>${list.assessor}</td>
-    </tr>
+        </tr>
     </c:forEach>
 
-    <tr>
-        <form action="update" method="post">
-            <td><input name="number" type="text" readonly="true" value="${data[0].number}"></td>
-    <td><input name="name" type="text" placeholder="教师姓名"></td>
-    <td><input name="password" type="text" placeholder="教师密码"></td>
-    <td>
-        <select id="title" name="title">
-            <option value="正高级教师">正高级教师</option>
-            <option value="高级教师">高级教师</option>
-            <option value="一级教师">一级教师</option>
-            <option value="二级教师">二级教师</option>
-            <option value="三级教师">三级教师</option>
-        </select>
-    </td>
-    <td><input name="phone" type="text" placeholder="教师手机"></td>
-    <td>
-        <select id="assessor" name="assessor">
-            <option value="0">无审批权限</option>
-            <option value="1">信息数理学院</option>
-            <option value="2">化工学院</option>
-        </select>
 
-    </td>
-            <input type="submit" value="提交">
+    <form action="update" method="post">
+        <tr>
+            <td><input name="number" type="text" readonly="true" value="${data[0].number}"></td>
+            <td><input name="name" type="text" placeholder="教师姓名" value="${data[0].name}"></td>
+            <td><input name="password" type="text" placeholder="教师密码" value="${data[0].password}"></td>
+            <td>
+                <select id="title" name="title">
+                    <option value="正高级教师">正高级教师</option>
+                    <option value="高级教师">高级教师</option>
+                    <option value="一级教师">一级教师</option>
+                    <option value="二级教师">二级教师</option>
+                    <option value="三级教师">三级教师</option>
+                </select>
+            </td>
+            <td><input name="phone" type="text" placeholder="教师手机" value="${data[0].phone}"></td>
+            <td>
+                <select id="assessor" name="assessor">
+                    <option value="0">无审批权限</option>
+                    <option value="1">信息数理学院</option>
+                    <option value="2">化工学院</option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="提交" onclick="submit_tip()"></td>
+        </tr>
     </form>
-    </tr>
+
 </table>
 </body>
+<script>
+    function submit_tip() {
+        alert("修改完成!");
+
+    }
+</script>
 </html>

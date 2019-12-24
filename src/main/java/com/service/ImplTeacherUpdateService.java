@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ImplTeacherUpdateService {
     public List<TeaAndDepPlus> getPersonInf(Teacher teacher);
-    public boolean updateTeacherInf(Teacher teacher);
+    public void updateTeacherInf(Teacher teacher);
 }

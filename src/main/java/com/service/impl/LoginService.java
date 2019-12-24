@@ -25,6 +25,8 @@ public class LoginService implements ImplLoginService {
         if(!list.isEmpty()){
             //有这个用户名
             if(list.get(0).getPassword().equals(teacher.getPassword())){
+                teacher.setNumber(list.get(0).getNumber());
+                teacher.setAssessor(list.get(0).getAssessor());
                 session.setAttribute("teacher",teacher);
             }
         }

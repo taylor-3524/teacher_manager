@@ -30,13 +30,12 @@ public class TeacherUpdateService implements ImplTeacherUpdateService {
     private TeacherMapper teacherMapper;
 
     @Override
-    public boolean updateTeacherInf(Teacher teacher) {
+    public void updateTeacherInf(Teacher teacher) {
         Integer number=teacher.getNumber();
         TeacherExample teacherExample=new TeacherExample();
         teacherExample.createCriteria().andNumberEqualTo(number);
-        int flag=teacherMapper.updateByExampleSelective(teacher,teacherExample);
-        System.out.println("update-flag:"+flag);
-        return true;
+        teacherMapper.updateByExampleSelective(teacher,teacherExample);
+
     }
 
 }
