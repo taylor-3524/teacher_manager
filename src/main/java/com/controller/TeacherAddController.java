@@ -47,7 +47,7 @@ public class TeacherAddController {
      */
     @RequestMapping(value = "/addAction")
     public ModelAndView addAction(TeaAndDep teaAndDep){
-        ModelAndView modelAndView=new ModelAndView("teaAdd/add");
+        ModelAndView modelAndView=new ModelAndView("teaMis/add");
         JSONObject jsonObject=teacherAddService.addAction(teaAndDep);
         modelAndView.addObject("add_msg",jsonObject);
         return modelAndView;

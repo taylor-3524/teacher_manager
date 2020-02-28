@@ -50,8 +50,6 @@ public class LoginController {
         }else {
             return "forward:/login/error";
         }
-
-
     }
 
 }

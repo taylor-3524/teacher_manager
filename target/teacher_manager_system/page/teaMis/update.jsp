@@ -2,16 +2,18 @@
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2019/12/24
-  Time: 11:29
+  Time: 10:59
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>修改教师信息</title>
 </head>
 <body>
+<label>请选择需要修改的教师</label>
+<br>
 <form action="../teaUpd/selectByDepAndJob" method="post">
     <label>选择部门</label>
     <select name="teaDepNum" id="dep">
@@ -38,28 +40,6 @@
 </form>
 
 
-<div >
-    <table class="tacher_inf">
-        <tr id="t_head">
-            <th>姓名</th>
-            <th>工号</th>
-            <th>操作</th>
-        </tr>
-        <c:forEach var="list" items="${data}" varStatus="status">
-            <tr>
-                <td>${list.name}</td>
-                <td>${list.number}</td>
-                <td><input value="删除" type="button" onclick="update(${list.number})"></td>
-            </tr>
-        </c:forEach>
-    </table>
 
-</div>
 </body>
-<script>
-    console.log(${data[0].number});
-    function update(number) {
-        window.location.href="updateGetPerson?number="+number;
-    }
-</script>
 </html>
